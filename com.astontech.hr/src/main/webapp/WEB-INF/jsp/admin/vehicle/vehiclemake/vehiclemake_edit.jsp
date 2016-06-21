@@ -30,13 +30,14 @@
 
             <c:set var="idx" value="0" scope="page" />
             <form:form cssClass="form-horizontal" modelAttribute="vehicleMakeEditVo" action="/admin/vehiclemake/update" method="post">
-                <form:hidden path="personid               <form:hidden path="version" />
+                <form:hidden path="id" />
+                <form:hidden path="version" />
 
                 <div class="row">
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="inputVehicleMakeName"></label>
                         <div class="col-sm-8">
-                            <form:input path="vehicleMakeName" id="inidleMakeName" cssClass="form-control"></form:input>
+                            <form:input path="vehicleMakeName" id="inputVehicleMakeName" cssClass="form-control"></form:input>
                         </div>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
 
                 <c:forEach items="${vehicleMakeEditVo.vehicleModels}" var="vehicleModel">
                     <form:hidden path="vehicleModels[${idx}].id" />
-     id       <form:hidden path="vehicleModels[${idx}].version" />
+                    <form:hidden path="vehicleModels[${idx}].version" />
                     <div class="row">
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="${idx}">Vehicle Model</label>

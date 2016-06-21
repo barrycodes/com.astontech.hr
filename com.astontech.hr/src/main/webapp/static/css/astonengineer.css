@@ -11,3 +11,7 @@
     color: #ffffff;
     font-weight: bolder;
 }
+.training-container div {
+    padding-left: 5px;
+    padding-right: 5px;
+}

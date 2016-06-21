@@ -42,6 +42,9 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private CurriculumService curriculumService;
 
+    @Autowired
+    private StudentService studentService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         seedData();
@@ -58,7 +61,7 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     private void seedCurriculums() {
 
         Curriculum c1 = new Curriculum("MyCurriculum1");
-        Curriculum c2 = new Curriculum("MyCurriculum2");
+        Curriculum c2 = new Curriculum("Database");
 
         AssignmentSection s1 = new AssignmentSection("MySection1");
         AssignmentSection s2 = new AssignmentSection("MySection2");
@@ -69,9 +72,9 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         Assignment a3 = new LinkAssignment("MyAssignment3", "https://google.com");
         Assignment a4 = new VideoAssignment("MyAssignment4");
         Assignment a5 = new DownloadAssignment("MyAssignment5");
-        LogHelper.getLogger().info(a1 instanceof LinkAssignment ? "true" : "false");
-        LogHelper.getLogger().info(a1 instanceof Assignment ? "true" : "false");
-        LogHelper.getLogger().info(a1 instanceof VideoAssignment ? "true" : "false");
+//        LogHelper.getLogger().info(a1 instanceof LinkAssignment ? "true" : "false");
+//        LogHelper.getLogger().info(a1 instanceof Assignment ? "true" : "false");
+//        LogHelper.getLogger().info(a1 instanceof VideoAssignment ? "true" : "false");
         s1.getAssignments().add(a1);
         s2.getAssignments().add(a2);
         s2.getAssignments().add(a3);
@@ -84,12 +87,17 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         curriculumService.saveCurriculum(c1);
         curriculumService.saveCurriculum(c2);
 
-        Curriculum c10 = curriculumService.getCurriculumById(1);
-        AssignmentSection s10 = c10.getSections().get(0);
-        Assignment a10 = s10.getAssignments().get(0);
-        LogHelper.getLogger().info(a10 instanceof LinkAssignment ? "true" : "false");
-        LogHelper.getLogger().info(a10 instanceof Assignment ? "true" : "false");
-        LogHelper.getLogger().info(a10 instanceof VideoAssignment ? "true" : "false");
+        Student st1 = new Student("barry@awesome.com");
+        st1.getAssignmentsCompleted().add(a2);
+
+        studentService.saveStudent(st1);
+
+//        Curriculum c10 = curriculumService.getCurriculumById(1);
+//        AssignmentSection s10 = c10.getSections().get(0);
+//        Assignment a10 = s10.getAssignments().get(0);
+//        LogHelper.getLogger().info(a10 instanceof LinkAssignment ? "true" : "false");
+//        LogHelper.getLogger().info(a10 instanceof Assignment ? "true" : "false");
+//        LogHelper.getLogger().info(a10 instanceof VideoAssignment ? "true" : "false");
     }
 
     private void seedElements() {
