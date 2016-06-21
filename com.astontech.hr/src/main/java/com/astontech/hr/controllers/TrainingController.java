@@ -92,4 +92,18 @@ public class TrainingController {
         curriculumCollectionService.saveCurriculumCollection(cc);
         return "redirect:/admin/training";
     }
+
+    @RequestMapping(value = "/admin/training/curriculum/delete/{id}", method = RequestMethod.GET)
+    public String trainingDeleteGet(@PathVariable("id") int id, Model model) {
+        CurriculumCollection cc = curriculumCollectionService.getFirstCurriculumCollection();
+        List<Curriculum> cList = cc.getCurriculums();
+        Curriculum c = curriculumService.getCurriculumById(id);
+
+        cList.remove(c);
+
+        curriculumCollectionService.saveCurriculumCollection(cc);
+        curriculumService.deleteCurriculum(id);
+
+        return "redirect:/admin/training";
+    }
 }
