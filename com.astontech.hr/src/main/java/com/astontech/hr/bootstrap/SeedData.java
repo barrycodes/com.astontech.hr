@@ -43,6 +43,9 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     private CurriculumService curriculumService;
 
     @Autowired
+    private CurriculumCollectionService curriculumCollectionService;
+
+    @Autowired
     private StudentService studentService;
 
     @Override
@@ -84,8 +87,13 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         c1.getSections().add(s1);
         c1.getSections().add(s2);
 
-        curriculumService.saveCurriculum(c1);
-        curriculumService.saveCurriculum(c2);
+        CurriculumCollection cc = new CurriculumCollection();
+        cc.getCurriculums().add(c1);
+        cc.getCurriculums().add(c2);
+
+        curriculumCollectionService.saveCurriculumCollection(cc);
+//        curriculumService.saveCurriculum(c1);
+//        curriculumService.saveCurriculum(c2);
 
         Student st1 = new Student("barry@awesome.com");
         st1.getAssignmentsCompleted().add(a2);

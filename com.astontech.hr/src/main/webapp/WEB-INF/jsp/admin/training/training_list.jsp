@@ -7,14 +7,43 @@
 <div class="wrapper training-container">
     <%@include file="training_sidebar.jsp" %>
     <div id = "main-wrapper" class="col-md-10">
-        <video id="my-video" class="video-js" controls preload="auto" width="512" height="384" data-setup="{}">
-            <c:url value="/static/videos/HTML-C01-CSSBasics.mp4" var="videoUrl" />
-            <source src="${videoUrl}" type='video/mp4'>
-            <%--<p class="vjs-no-js">--%>
-                <%--To view this video please enable JavaScript, and consider upgrading to a web browser that--%>
-                <%--<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>--%>
-            <%--</p>--%>
-        </video>
+        <div class="col-md-12">
+            <h3>Curriculums</h3>
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Sections</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="curriculum" items="${curriculums}">
+                    <tr>
+                        <td>${curriculum.id}</td>
+                        <td>${curriculum.name}</td>
+                        <td>${curriculum.sections.size()}</td>
+                        <td><a href="/admin/training/curriculum/up/${curriculum.id}">Move Up</a></td>
+                        <td><a href="/admin/training/curriculum/down/${curriculum.id}">Move Down</a></td>
+                        <td><a href="/admin/training/curriculum/edit/${curriculum.id}">Edit</a></td>
+                        <td><a href="/admin/training/curriculum/delete/${curriculum.id}">Delete</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <%--<video id="my-video" class="video-js" controls preload="auto" width="512" height="384" data-setup="{}">--%>
+            <%--<c:url value="/static/videos/HTML-C01-CSSBasics.mp4" var="videoUrl" />--%>
+            <%--<source src="${videoUrl}" type='video/mp4'>--%>
+            <%--&lt;%&ndash;<p class="vjs-no-js">&ndash;%&gt;--%>
+                <%--&lt;%&ndash;To view this video please enable JavaScript, and consider upgrading to a web browser that&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;</p>&ndash;%&gt;--%>
+        <%--</video>--%>
 
 
         <%--<%--LIST OF EXISTING ELEMENTS--%>

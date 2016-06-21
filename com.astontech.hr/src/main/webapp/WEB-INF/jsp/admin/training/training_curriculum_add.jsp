@@ -13,7 +13,7 @@
 
 <div class="wrapper">
     <%@include file="training_sidebar.jsp" %>
-    <div id = "main-wrapper" class="col-sm-9">
+    <div id = "main-wrapper" class="col-md-10">
         <div class="col-sm-8">
             <form:form cssClass="form-horizontal" modelAttribute="curriculum" action="/admin/training/curriculum/add" method="post">
                 <legend>New Curriculum</legend>
